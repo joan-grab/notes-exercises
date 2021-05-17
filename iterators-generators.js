@@ -18,12 +18,12 @@ function myIterator(start, finish) {
     }
 }
 
-// const it = myIterator(0, 10);
-// let res = it.next();
-// while(!res.done) {
-//     console.log(res.value);
-//     res = it.next(); 
-// }
+const it = myIterator(0, 10);
+let res = it.next();
+while(!res.done) {
+    console.log(res.value);
+    res = it.next(); 
+}
 
 // generators 
 
@@ -53,6 +53,21 @@ const originalTimestamp = it.next();
 console.log(originalTimestamp);
 it.next();
 console.log('pause');
-// it.next(6000);
-// console.log('pause');
+it.next(6000);
+console.log('pause');
+
+// constantly running generator
+
+function* randomNum() {
+    while(true){
+        yield Math.floor(Math.random() * 100);
+    }
+}
+
+const it = randomNum();
+function getRandomNum() {
+    return it.next().value;
+}
+
+console.log(getRandomNum());
 
