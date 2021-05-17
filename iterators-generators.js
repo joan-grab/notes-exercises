@@ -71,3 +71,40 @@ function getRandomNum() {
 
 console.log(getRandomNum());
 
+// yield delegation
+
+function* gen1() {
+    yield 1;
+    yield 2;
+    return 4;
+}
+
+function* gen2() {
+    const val = yield* gen1();
+    yield 3;
+    yield val;
+}
+
+const it = gen2();
+console.log(it.next());
+console.log(it.next());
+console.log(it.next());
+console.log(it.next());
+// output 1, 2, 3, 4 (all objects)
+
+
+function gen1() {
+    return ['one', 'two', 'three'];
+}
+
+function* gen2() {
+    const val = yield* gen1();
+
+}
+
+const it = gen2();
+console.log(it.next());
+console.log(it.next());
+console.log(it.next());
+// output one two three in seperate objects
+
