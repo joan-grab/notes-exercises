@@ -99,7 +99,7 @@ process.stderr
 process.stdin
 process.stdout
 
-process.stdout.write('hello\n'); === console.log('hello');
+// process.stdout.write('hello\n'); === console.log('hello');
 
 
 // input echoes output
